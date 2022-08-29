@@ -1,4 +1,4 @@
-CREATE DATABASE apitoti;
+CREATE DATABASE api_node_toti;
 
 CREATE TABLE tasks(
     id SERIAL PRIMARY KEY,
