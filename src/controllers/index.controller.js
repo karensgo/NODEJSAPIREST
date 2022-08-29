@@ -12,19 +12,17 @@ const pool = new Pool({
 const getTasks = async (req, res) => {
    const response = await pool.query('SELECT * FROM tasks');
    res.status(200).json(response.rows);
-   
 };
 
 const getTaskById = async (req,res) => {
-    const id = req.params.id 
+    const id = req.params.id
     const response = await pool.query('SELECT * FROM tasks WHERE id = $1' , [id]);
     res.json(response.rows);
 }
 
 const createTask = async (req, res) => {
-    const { name, done } = req.body;    
-
-    const response = await pool.query('INSERT INTO tasks (name, done) VALUES ($1, $2)' , [name, done]);
+const { name, done } = req.body;
+const response = await pool.query('INSERT INTO tasks (name, done) VALUES ($1, $2)' , [name, done]);
     console.log(response);
     res.json({
         message: 'Tarefa criada com sucesso!', 
